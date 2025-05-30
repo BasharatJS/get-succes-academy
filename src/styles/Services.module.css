@@ -1,0 +1,307 @@
+/* styles/Services.module.css */
+.services {
+  padding: 6rem 0;
+  background: var(--bg-primary);
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* SPECIAL DOOR OPENING ANIMATION */
+.serviceCard {
+  background: var(--bg-secondary);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 20px var(--shadow-light);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  perspective: 1000px;
+  height: 550px;
+}
+
+/* Front face of the card */
+.cardFront {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: var(--bg-secondary);
+  border-radius: 1.5rem;
+  transform-origin: left center;
+  /* Fix: Initial state - front face visible */
+  transform: rotateY(0deg);
+}
+
+/* Back face of the card */
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 1.5rem;
+  transform-origin: left center;
+  /* Fix: Initial state - back face hidden behind, text not inverted */
+  transform: rotateY(-180deg);
+}
+
+/* Hover effect - door opening */
+.serviceCard:hover .cardFront {
+  /* Fix: On hover, front face rotates away */
+  transform: rotateY(-180deg);
+}
+
+.serviceCard:hover .cardBack {
+  /* Fix: On hover, back face becomes visible with correct orientation */
+  transform: rotateY(0deg);
+}
+
+/* Color variants for back face */
+.serviceCard.green .cardBack {
+  background: linear-gradient(135deg, var(--color-green), #059669);
+  color: white;
+}
+
+.serviceCard.blue .cardBack {
+  background: linear-gradient(135deg, var(--color-blue), #2563eb);
+  color: white;
+}
+
+.serviceCard.purple .cardBack {
+  background: linear-gradient(135deg, var(--color-purple), #7c3aed);
+  color: white;
+}
+
+.serviceCard.orange .cardBack {
+  background: linear-gradient(135deg, var(--color-orange), #ea580c);
+  color: white;
+}
+
+.serviceCard.red .cardBack {
+  background: linear-gradient(135deg, var(--color-red), #dc2626);
+  color: white;
+}
+
+.serviceCard.teal .cardBack {
+  background: linear-gradient(135deg, var(--color-teal), #0d9488);
+  color: white;
+}
+
+/* Top border indicator */
+.serviceCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  z-index: 10;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.serviceCard.green::before {
+  background: var(--color-green);
+}
+.serviceCard.blue::before {
+  background: var(--color-blue);
+}
+.serviceCard.purple::before {
+  background: var(--color-purple);
+}
+.serviceCard.orange::before {
+  background: var(--color-orange);
+}
+.serviceCard.red::before {
+  background: var(--color-red);
+}
+.serviceCard.teal::before {
+  background: var(--color-teal);
+}
+
+.serviceIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.serviceCard:hover .serviceIcon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.serviceContent h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.serviceSubtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.serviceContent p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.serviceFeatures {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.serviceFeatures li {
+  padding: 0.3rem 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.serviceCta {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.serviceCta:hover {
+  color: var(--primary-dark);
+}
+
+/* Back face content */
+.backIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.backTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.backDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  color: white;
+}
+
+/* Fixed button styling with proper text orientation */
+.backCta {
+  background: rgba(255, 255, 255, 0.2);
+  color: white !important;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  /* Fix: Ensure text orientation is correct */
+  transform: none;
+}
+
+.backCta:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure all back face content has proper text color in all themes */
+[data-theme='dark'] .backTitle,
+[data-theme='dark'] .backDescription,
+[data-theme='dark'] .backCta {
+  color: white !important;
+}
+
+[data-theme='light'] .backTitle,
+[data-theme='light'] .backDescription,
+[data-theme='light'] .backCta {
+  color: white !important;
+}
+
+.servicesCta {
+  text-align: center;
+  background: var(--bg-secondary);
+  padding: 3rem 2rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.servicesCta h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.servicesCta p {
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    height: auto;
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .serviceCard {
+    min-height: 400px;
+  }
+
+  .cardFront,
+  .cardBack {
+    padding: 1.5rem;
+  }
+
+  .backTitle {
+    font-size: 1.5rem;
+  }
+
+  .backDescription {
+    font-size: 0.9rem;
+  }
+
+  .backCta {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}

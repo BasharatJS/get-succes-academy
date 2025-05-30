@@ -1,0 +1,527 @@
+/* styles/ContactForm.module.css */
+.contactSection {
+  padding: 6rem 0;
+  background: #2a3f5f;
+  min-height: 100vh;
+  color: white;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.description {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Main Grid - Map Left, Form Right */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Map Section - Left Side */
+.mapSection {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mapHeader {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.mapHeader h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.mapHeader p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Map Wrapper */
+.mapWrapper {
+  position: relative;
+}
+
+.mapContainer {
+  position: relative;
+  height: 500px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Map Loading */
+.mapLoading {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  color: white;
+}
+
+/* Custom Marker */
+.customMarker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.markerPin {
+  width: 30px;
+  height: 30px;
+  background: #e91e63;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+  animation: markerPulse 2s infinite;
+}
+
+.markerInner {
+  color: white;
+  font-size: 14px;
+}
+
+@keyframes markerPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+  }
+}
+
+/* Zoom Controls */
+.zoomControls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.zoomBtn {
+  width: 32px;
+  height: 32px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.zoomBtn:hover {
+  background: #f8f9fa;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* Overlay Card - Smaller like reference */
+.overlayCard {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  width: 280px;
+  background: rgba(42, 63, 95, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.cardHeader {
+  margin-bottom: 1rem;
+}
+
+.cardHeader h4 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.contactInfo {
+  margin-bottom: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.infoIcon {
+  font-size: 1rem;
+  width: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.infoContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.infoLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.infoValue {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.3;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.callBtn,
+.directionsBtn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.callBtn {
+  background: #e91e63;
+  color: white;
+}
+
+.directionsBtn {
+  background: #667eea;
+  color: white;
+}
+
+.callBtn:hover,
+.directionsBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.socialIcon {
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.socialIcon:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Form Section - Right Side */
+.formSection {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: fit-content;
+}
+
+.formHeader {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.formHeader h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.formHeader p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input,
+.textarea {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Message */
+.successMessage {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(76, 175, 80, 0.2);
+  border: 2px solid rgba(76, 175, 80, 0.5);
+  border-radius: 1rem;
+  color: #4caf50;
+}
+
+.successIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.successMessage h4 {
+  color: #4caf50;
+  margin: 0 0 0.5rem 0;
+}
+
+.successMessage p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .contactGrid {
+    grid-template-columns: 1fr 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mapContainer {
+    height: 400px;
+  }
+
+  .overlayCard {
+    padding: 0.75rem;
+    width: 250px;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .formSection {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 4rem 0;
+  }
+
+  .mapContainer {
+    height: 350px;
+  }
+
+  .overlayCard {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 220px;
+    padding: 0.75rem;
+  }
+
+  .infoValue {
+    font-size: 0.8rem;
+  }
+
+  .socialIcons {
+    gap: 0.5rem;
+  }
+
+  .socialIcon {
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+  }
+
+  .callBtn,
+  .directionsBtn {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.6rem;
+  }
+}

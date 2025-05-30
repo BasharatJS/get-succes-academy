@@ -1,0 +1,603 @@
+/* styles/Teachers.module.css */
+.teachers {
+  padding: 6rem 0;
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.teachers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgba(79, 70, 229, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(6, 182, 212, 0.03) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+/* Navigation Buttons */
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 5;
+}
+
+.navBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: var(--bg-primary);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.2);
+}
+
+.navBtn:hover:not(:disabled) {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+}
+
+.navBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Teachers Container */
+.teachersContainer {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  /* Fix: Set exact width to show only 3 cards */
+  max-width: 1040px; /* (320px * 3) + (2rem * 2) = 1000px + 40px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.teachersSlider {
+  display: flex;
+  gap: 2rem;
+  overflow-x: hidden; /* Hide overflow to prevent partial cards */
+  scroll-behavior: smooth;
+  padding: 1rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Fix: Set exact width for 3 cards */
+  width: 1050px; /* 320px * 3 + 2rem * 2 gaps */
+}
+
+.teachersSlider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Teacher Cards */
+.teacherCard {
+  flex: 0 0 320px; /* Exact width for each card */
+  background: var(--bg-primary);
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.teacherCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: 2rem 2rem 0 0;
+}
+
+/* Category-based styling */
+.teacherCard.leadership::before {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.teacherCard.science::before {
+  background: linear-gradient(135deg, #4834d4, #686de0);
+}
+
+.teacherCard.humanities::before {
+  background: linear-gradient(135deg, #00d2d3, #54a0ff);
+}
+
+.teacherCard.technology::before {
+  background: linear-gradient(135deg, #ff9ff3, #f368e0);
+}
+
+.cardGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(79, 70, 229, 0.02) 100%
+  );
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 2rem;
+}
+
+.teacherCard:hover .cardGradient {
+  opacity: 1;
+}
+
+/* Teacher Image */
+.teacherImage {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.imageContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+  transition: all 0.3s ease;
+}
+
+.emoji {
+  font-size: 4rem;
+  z-index: 2;
+  position: relative;
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(79, 70, 229, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.viewProfile {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.imageContainer:hover .imageOverlay {
+  opacity: 1;
+}
+
+/* Teacher Info */
+.teacherInfo {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.teacherName {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.roleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.role {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.experience {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.degree {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.specialization {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Achievements */
+.achievements {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.achievements h4 {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.achievements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.3rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.achievements li::before {
+  content: '🏆';
+  position: absolute;
+  left: 0;
+  font-size: 0.7rem;
+}
+
+/* Contact Button */
+.contactBtn {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  border-radius: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.contactBtn:hover {
+  background: var(--primary-color);
+  color: white;
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+}
+
+/* Scroll Indicators */
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: var(--primary-color);
+  transform: scale(1.3);
+}
+
+.indicator:hover {
+  background: var(--primary-light);
+}
+
+/* Hover Effects */
+.teacherCard:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.teacherCard:hover .imageContainer {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.4);
+}
+
+/* Category-specific hover effects */
+.teacherCard.leadership:hover {
+  box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+}
+
+.teacherCard.science:hover {
+  box-shadow: 0 20px 40px rgba(72, 52, 212, 0.2);
+}
+
+.teacherCard.humanities:hover {
+  box-shadow: 0 20px 40px rgba(0, 210, 211, 0.2);
+}
+
+.teacherCard.technology:hover {
+  box-shadow: 0 20px 40px rgba(255, 159, 243, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .teachersContainer {
+    /* Adjust for smaller cards */
+    max-width: 940px; /* (300px * 3) + (1.5rem * 2) = 900px + 40px */
+  }
+
+  .teachersSlider {
+    width: 930px; /* 300px * 3 + 1.5rem * 2 gaps */
+    gap: 1.5rem;
+  }
+
+  .teacherCard {
+    flex: 0 0 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .teachersContainer {
+    /* Show 2 cards on tablets */
+    max-width: 620px; /* (280px * 2) + (1.5rem * 1) = 560px + 60px */
+  }
+
+  .teachersSlider {
+    width: 590px; /* 280px * 2 + 1.5rem gap */
+    gap: 1.5rem;
+  }
+
+  .teacherCard {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .teachers {
+    padding: 4rem 0;
+  }
+
+  .navigation {
+    margin-bottom: 2rem;
+  }
+
+  .navBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+
+  .teachersContainer {
+    /* Show 2 cards on mobile tablets */
+    max-width: 580px; /* (270px * 2) + (1.5rem * 1) = 540px + 40px */
+  }
+
+  .teachersSlider {
+    width: 570px; /* 270px * 2 + 1.5rem gap */
+    gap: 1.5rem;
+  }
+
+  .teacherCard {
+    flex: 0 0 270px;
+    padding: 1.5rem;
+  }
+
+  .imageContainer {
+    width: 100px;
+    height: 100px;
+  }
+
+  .emoji {
+    font-size: 3.5rem;
+  }
+
+  .teacherName {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .teachersContainer {
+    /* Show 1 card only on small screens */
+    max-width: 280px;
+  }
+
+  .teachersSlider {
+    width: 280px;
+    gap: 0;
+  }
+
+  .teacherCard {
+    flex: 0 0 280px;
+    padding: 1.2rem;
+  }
+
+  .imageContainer {
+    width: 90px;
+    height: 90px;
+  }
+
+  .emoji {
+    font-size: 3rem;
+  }
+
+  .teacherName {
+    font-size: 1.1rem;
+  }
+
+  .roleContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .achievements {
+    margin-bottom: 1rem;
+  }
+
+  .achievements li {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teachersContainer {
+    /* Single card view for very small screens */
+    max-width: 260px;
+  }
+
+  .teachersSlider {
+    width: 260px;
+    gap: 0;
+  }
+
+  .teacherCard {
+    flex: 0 0 260px;
+    padding: 1rem;
+  }
+
+  .imageContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .emoji {
+    font-size: 2.5rem;
+  }
+
+  .teacherName {
+    font-size: 1rem;
+  }
+
+  .role,
+  .experience {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .contactBtn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+  }
+  50% {
+    box-shadow: 0 12px 35px rgba(79, 70, 229, 0.5);
+  }
+}
+
+.imageContainer {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Smooth scroll behavior */
+.teachersSlider {
+  scroll-snap-type: x mandatory;
+}
+
+.teacherCard {
+  scroll-snap-align: start;
+}
+
+/* Loading animation */
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.teacherCard {
+  animation: slideInFromRight 0.6s ease-out forwards;
+}
