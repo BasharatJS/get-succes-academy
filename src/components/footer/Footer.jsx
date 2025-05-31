@@ -351,7 +351,20 @@ const Footer = () => {
           <motion.div className={styles.bottomContent}>
             <motion.p className={styles.copyright} whileHover={{ scale: 1.02 }}>
               © 2025 Get Success Academy. All Rights Reserved. Designed by{' '}
-              <span className={styles.designer}>EduTech Solutions</span>
+              <motion.a
+                href="https://basharat-portfolio-app.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.designer}
+                whileHover={{
+                  scale: 1.05,
+                  color: 'var(--primary-color)',
+                  textDecoration: 'underline',
+                }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Basharat@SD
+              </motion.a>
             </motion.p>
 
             <motion.div className={styles.backToTop}>
