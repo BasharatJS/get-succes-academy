@@ -91,7 +91,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className={styles.footer} ref={ref}>
+    <footer className={styles.footer} ref={ref} id="footer">
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
         {[...Array(6)].map((_, i) => (

@@ -1,0 +1,429 @@
+/* Gallery Section */
+.gallery {
+  padding: 8rem 0;
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 50%,
+    var(--bg-primary) 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0f0f0' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
+    repeat;
+  pointer-events: none;
+}
+
+/* Filter Container */
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 2rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px var(--shadow-light);
+}
+
+.filterBtn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--shadow-medium);
+}
+
+.filterBtn.active {
+  background: var(--gradient-primary);
+  border-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+}
+
+.filterIcon {
+  font-size: 1.1rem;
+}
+
+/* Simple Gallery Grid */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Simple Card Design - NO COMPLEX EFFECTS */
+.galleryItem {
+  background: var(--bg-primary);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  height: 400px;
+  position: relative;
+}
+
+/* Simple hover - ONLY translateY */
+.galleryItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Card Content */
+.galleryItemContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Image Section */
+.galleryImageContainer {
+  width: 100%;
+  height: 60%;
+  overflow: hidden;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Simple overlay */
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(transparent, var(--bg-primary));
+}
+
+/* Content Section */
+.contentOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  padding: 1.5rem;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contentHeader {
+  display: flex;
+  align-items: center;
+}
+
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.contentBody {
+  flex: 1;
+  padding: 0.5rem 0;
+}
+
+.itemTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.itemDescription {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.contentFooter {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.viewButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.galleryItem:hover .viewButton {
+  opacity: 1;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+.modalContent {
+  background: var(--bg-primary);
+  border-radius: 2rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.closeBtn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.modalImage {
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 32px var(--shadow-medium);
+}
+
+.modalImageElement {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.modalInfo h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.modalInfo p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.modalCategory {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Call to Action */
+.galleryCta {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--gradient-hero);
+  border-radius: 2rem;
+  color: white;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.galleryCta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(255,255,255,0.05)' fill-opacity='1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")
+    repeat;
+  pointer-events: none;
+}
+
+.galleryCta h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.galleryCta p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .galleryItem {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    padding: 4rem 0;
+  }
+
+  .filterContainer {
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .filterBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .galleryItem {
+    height: 320px;
+    margin: 0 auto;
+    max-width: 350px;
+  }
+
+  .contentOverlay {
+    padding: 1rem;
+  }
+
+  .itemTitle {
+    font-size: 1.1rem;
+  }
+
+  .itemDescription {
+    font-size: 0.85rem;
+  }
+
+  .galleryCta {
+    padding: 2rem 1rem;
+  }
+
+  .galleryCta h3 {
+    font-size: 1.5rem;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .filterContainer {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+
+  .filterBtn {
+    flex-shrink: 0;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .galleryItem {
+    height: 300px;
+  }
+
+  .contentOverlay {
+    padding: 0.8rem;
+  }
+
+  .categoryTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .itemTitle {
+    font-size: 1rem;
+  }
+
+  .itemDescription {
+    font-size: 0.8rem;
+  }
+}

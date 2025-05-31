@@ -56,7 +56,7 @@ const Hero = () => {
   }
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} id="home">
       <div className={styles.heroBackground}>
         {/* <div className={styles.heroPattern}></div> */}
         <div className={styles.floatingElements}>

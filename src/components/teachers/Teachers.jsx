@@ -200,7 +200,7 @@ const Teachers = () => {
   }
 
   return (
-    <section className={styles.teachers} ref={ref}>
+    <section className={styles.teachers} ref={ref} id="teachers">
       <div className="container">
         {/* Section Header */}
         <motion.div

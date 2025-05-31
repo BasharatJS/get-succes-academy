@@ -106,7 +106,7 @@ const Services = () => {
   }
 
   return (
-    <section className={styles.services} ref={ref}>
+    <section className={styles.services} ref={ref} id="services">
       <div className="container">
         <motion.div
           className="section-header"

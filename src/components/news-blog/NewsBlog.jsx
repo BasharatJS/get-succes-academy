@@ -133,7 +133,7 @@ const NewsBlog = () => {
   }
 
   return (
-    <section className={styles.newsBlog} ref={ref}>
+    <section className={styles.newsBlog} ref={ref} id="blog">
       {/* Animated Background Elements */}
       <div className={styles.backgroundElements}>
         {[...Array(6)].map((_, i) => (

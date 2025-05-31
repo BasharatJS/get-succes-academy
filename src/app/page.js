@@ -10,6 +10,7 @@ import Testimonials from '@/components/testimonials/Testimonials'
 import NewsBlog from '@/components/news-blog/NewsBlog'
 import Footer from '@/components/footer/Footer'
 import ContactForm from '@/components/contact-form/ContactForm'
+import Gallery from '@/components/gallery/Gallery'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -149,6 +150,7 @@ export default function Home() {
       <Teachers />
       <Testimonials />
       <NewsBlog />
+      <Gallery />
       <ContactForm />
       <Footer />
     </main>

@@ -74,7 +74,7 @@ const About = () => {
   ]
 
   return (
-    <section className={styles.about} ref={ref}>
+    <section className={styles.about} ref={ref} id="about">
       {/* Floating Background Elements */}
       <div className={styles.floatingElements}>
         <motion.div

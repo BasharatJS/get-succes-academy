@@ -52,7 +52,7 @@ const ContactForm = () => {
   }
 
   return (
-    <section className={styles.contactSection} ref={ref}>
+    <section className={styles.contactSection} ref={ref} id="contact">
       <div className={styles.container}>
         {/* Section Header */}
         <motion.div
